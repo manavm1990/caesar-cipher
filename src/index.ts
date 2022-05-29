@@ -3,10 +3,11 @@ export const removePunc = (text = '') => text.replace(/[^\w\s]/g, '');
 export const removeSpaces = (text = '') => text.replace(/\s/g, '');
 
 export const tallyLetters = (text = '') =>
-  removeSpaces(removePunc(text))
+  text
     .toLowerCase()
     .split('')
     .reduce((tally: { [key: string]: number }, letter: string) => {
+      if (!letter.match(/[a-z]/)) return tally;
       tally[letter] = tally[letter] ? tally[letter]! + 1 : 1;
       return tally;
     }, {});
