@@ -11,7 +11,7 @@ export const tallyLetters = (text = '') =>
       return tally;
     }, {});
 
-export default (text = '') => {
+export const getMostCommonLetters = (text = '') => {
   const sortedLetterTallyEntries = Object.entries(tallyLetters(text)).sort(
     (a, b) => b[1] - a[1],
   );

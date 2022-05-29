@@ -1,4 +1,5 @@
-import getMostCommonLetters, {
+import {
+  getMostCommonLetters,
   removePunc,
   removeSpaces,
   tallyLetters,
