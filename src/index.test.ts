@@ -3,6 +3,7 @@ import {
   removePunc,
   removeSpaces,
   tallyLetters,
+  encode,
 } from './index';
 
 const test = 'Every good boy does fine.';
@@ -43,5 +44,11 @@ describe('getHighestLetterFrequency', () => {
 
   it('should return an empty array if there are no letters', () => {
     expect(getMostCommonLetters('')).toEqual([]);
+  });
+});
+
+describe('Caesar cipher encoding and decoding', () => {
+  it('should encode a string with a Caesar Cipher shift of 3', () => {
+    expect(encode('Hello world!', 3)).toBe('khoor zruog!');
   });
 });
