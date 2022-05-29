@@ -18,7 +18,7 @@ describe('getHighestLetterFrequency', () => {
   });
 
   it('should tally up the letters', () => {
-    expect(tallyLetters('Every good boy does fine.')).toEqual({
+    expect(tallyLetters(test)).toEqual({
       e: 4,
       v: 1,
       r: 1,
