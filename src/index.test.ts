@@ -1,4 +1,5 @@
 import {
+  decode,
   encode,
   getMostCommonLetters,
   removePunc,
@@ -50,5 +51,9 @@ describe('getHighestLetterFrequency', () => {
 describe('Caesar cipher encoding and decoding', () => {
   it('should encode a string with a Caesar Cipher shift of 3', () => {
     expect(encode('Hello world!', 3)).toBe('khoor zruog!');
+  });
+
+  it('should decode a string with a Caesar Cipher shift of 3', () => {
+    expect(decode('khoor zruog!', 3)).toBe('Hello world!');
   });
 });

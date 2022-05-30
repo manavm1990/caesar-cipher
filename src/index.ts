@@ -1,3 +1,7 @@
+export const decode = (encoded = '', shift: number) => {
+  throw new Error('Not implemented');
+};
+
 export const encode = (text = '', shift = 3) =>
   // Lowercase letters are character codes 97-122.
   text
