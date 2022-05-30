@@ -1,19 +1,18 @@
 const shiftDecodeLower = (originalCharCode: number, shift: number) => {
-  let decodedCharCode = originalCharCode - shift + 1;
+  const decodedCharCode = originalCharCode - shift + 1;
 
   if (decodedCharCode < 65) {
-    decodedCharCode = 90 - (65 - decodedCharCode) + 1;
+    return String.fromCharCode(90 - (65 - decodedCharCode) + 1);
   }
 
   return String.fromCharCode(decodedCharCode);
 };
 
 const shiftDecodeUpper = (originalCharCode: number, shift: number) => {
-  let decodedCharCode = originalCharCode - shift + 1;
+  const decodedCharCode = originalCharCode - shift + 1;
 
-  // Must be upper case
   if (decodedCharCode < 97) {
-    decodedCharCode = 122 - (97 - decodedCharCode) + 1;
+    return String.fromCharCode(122 - (97 - decodedCharCode) + 1);
   }
 
   return String.fromCharCode(decodedCharCode);
