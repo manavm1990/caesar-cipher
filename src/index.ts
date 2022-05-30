@@ -21,9 +21,19 @@ export const encode = (text = '', shift = 4) =>
     .map((char) => {
       if (!char.match(/[a-zA-Z]/)) return char;
 
-      const shiftedCode = char.charCodeAt(0) + shift - 1;
+      // Letters are 65-90 or 97-122
+      // Get the unencoded char code to see if it's upper or lower case
+      const originalCharCode = char.charCodeAt(0);
+      const shiftedCode = originalCharCode + shift - 1;
 
-      // TODO: Encode mixed cases
+      if (originalCharCode >= 65 && originalCharCode <= 90) {
+        if (shiftedCode > 90) {
+          return String.fromCharCode((shiftedCode % 90) + 64);
+        }
+
+        return String.fromCharCode(shiftedCode);
+      }
+
       // wrap around the alphabet
       if (shiftedCode > 122) {
         // At a shift of 22, the letter 'f' (shifted to 123) wraps to 'a' (97)

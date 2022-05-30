@@ -71,6 +71,28 @@ describe('Caesar cipher encoding and decoding', () => {
     ).toBe('ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.');
   });
 
+  it('should encode a mixed case string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
+    expect(encode('Hello World!', 22)).toBe('Czggj Rjmgy!');
+
+    expect(
+      encode(
+        'This sentence should use the letter E more than any other letter.',
+        22,
+      ),
+    ).toBe('Ocdn nziozixz ncjpgy pnz ocz gzoozm Z hjmz ocvi vit joczm gzoozm.');
+  });
+
+  it('should encode an upper case string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
+    expect(encode('HELLO WORLD!', 22)).toBe('CZGGJ RJMGY!');
+
+    expect(
+      encode(
+        'THIS SENTENCE SHOULD USE THE LETTER E MORE THAN ANY OTHER LETTER.',
+        22,
+      ),
+    ).toBe('OCDN NZIOZIXZ NCJPGY PNZ OCZ GZOOZM Z HJMZ OCVI VIT JOCZM GZOOZM.');
+  });
+
   it('should decode a string with a Caesar Cipher shift of 4', () => {
     expect(decode('khoor zruog!', 4)).toBe('hello world!');
 
