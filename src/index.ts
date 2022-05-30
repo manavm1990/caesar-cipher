@@ -1,6 +1,12 @@
-export const decode = (encoded = '', shift: number) => {
-  throw new Error('Not implemented');
-};
+export const decode = (encoded = '', shift: number) =>
+  encoded
+    .split('')
+    .map((char) =>
+      char.match(/[a-z]/)
+        ? String.fromCharCode(char.charCodeAt(0) - shift)
+        : char,
+    )
+    .join('');
 
 export const encode = (text = '', shift = 3) =>
   // Lowercase letters are character codes 97-122.

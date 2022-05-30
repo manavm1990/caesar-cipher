@@ -54,6 +54,6 @@ describe('Caesar cipher encoding and decoding', () => {
   });
 
   it('should decode a string with a Caesar Cipher shift of 3', () => {
-    expect(decode('khoor zruog!', 3)).toBe('Hello world!');
+    expect(decode('khoor zruog!', 3)).toBe('hello world!');
   });
 });
