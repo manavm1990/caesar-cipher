@@ -1,9 +1,9 @@
 import {
+  encode,
   getMostCommonLetters,
   removePunc,
   removeSpaces,
   tallyLetters,
-  encode,
 } from './index';
 
 const test = 'Every good boy does fine.';
