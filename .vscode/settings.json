@@ -18,8 +18,8 @@
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
   "prettier.requireConfig": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.suggest.classMemberSnippets.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "none",
+  "typescript.suggest.classMemberSnippets.enabled": false,
   "typescript.validate.enable": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "cSpell.words": ["Everygoodboydoesfine", "khoor", "Punc", "zruog"]
