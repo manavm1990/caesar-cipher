@@ -2,6 +2,7 @@ import {
   decode,
   encode,
   getMostCommonLetters,
+  guessWithFrequencyAnalysis,
   removePunc,
   removeSpaces,
   tallyLetters,
@@ -81,5 +82,11 @@ describe('Caesar cipher encoding and decoding', () => {
     ).toBe('this sentence should use the letter e more than any other letter.');
   });
 
+  it("should make a reasonable guess based upon a single 'non-e' letter occurring most frequently", () => {
+    expect(
+      guessWithFrequencyAnalysis(
+        'ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.',
+      ),
+    ).toBe('this sentence should use the letter e more than any other letter.');
   });
 });
