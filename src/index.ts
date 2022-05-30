@@ -3,10 +3,12 @@ export const encode = (text = '', shift = 3) =>
   text
     .toLowerCase()
     .split('')
-    .map((letter) => {
-      const code = letter.charCodeAt(0);
-      if (code < 97 || code > 122) return letter;
-      return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+    .map((char) => {
+      if (!char.match(/[a-z]/)) {
+        return char;
+      }
+
+      return String.fromCharCode(char.charCodeAt(0) + shift);
     })
     .join('');
 
