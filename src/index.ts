@@ -2,11 +2,16 @@
 export const decode = (encoded = '', shift: number) =>
   encoded
     .split('')
-    .map((char) =>
-      char.match(/[a-zA-Z]/)
-        ? String.fromCharCode(char.charCodeAt(0) - shift + 1)
-        : char,
-    )
+    .map((char) => {
+      if (!char.match(/[a-zA-Z]/)) return char;
+      let decodedCharCode = char.charCodeAt(0) - shift + 1;
+
+      if (decodedCharCode < 97) {
+        decodedCharCode = 122 - (97 - decodedCharCode) + 1;
+      }
+
+      return String.fromCharCode(decodedCharCode);
+    })
     .join('');
 
 export const encode = (text = '', shift = 4) =>

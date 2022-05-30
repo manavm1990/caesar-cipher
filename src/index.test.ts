@@ -51,14 +51,34 @@ describe('getHighestLetterFrequency', () => {
 describe('Caesar cipher encoding and decoding', () => {
   it('should encode a string with a Caesar Cipher shift of 4', () => {
     expect(encode('Hello world!', 4)).toBe('Khoor zruog!');
+
+    expect(
+      encode(
+        'This sentence should use the letter e more than any other letter.',
+      ),
+    ).toBe('Wklv vhqwhqfh vkrxog xvh wkh ohwwhu h pruh wkdq dqb rwkhu ohwwhu.');
   });
 
   it('should encode a lowercase string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
     expect(encode('hello world!', 22)).toBe('czggj rjmgy!');
+
+    expect(
+      encode(
+        'this sentence should use the letter e more than any other letter.',
+        22,
+      ),
+    ).toBe('ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.');
   });
 
   it('should decode a string with a Caesar Cipher shift of 4', () => {
     expect(decode('khoor zruog!', 4)).toBe('hello world!');
+
+    expect(
+      decode(
+        'ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.',
+        22,
+      ),
+    ).toBe('this sentence should use the letter e more than any other letter.');
   });
 
   });
