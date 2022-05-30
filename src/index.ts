@@ -2,24 +2,20 @@ export const decode = (encoded = '', shift: number) =>
   encoded
     .split('')
     .map((char) =>
-      char.match(/[a-z]/)
+      char.match(/[a-zA-Z]/)
         ? String.fromCharCode(char.charCodeAt(0) - shift)
         : char,
     )
     .join('');
 
 export const encode = (text = '', shift = 3) =>
-  // Lowercase letters are character codes 97-122.
   text
-    .toLowerCase()
     .split('')
-    .map((char) => {
-      if (!char.match(/[a-z]/)) {
-        return char;
-      }
-
-      return String.fromCharCode(char.charCodeAt(0) + shift);
-    })
+    .map((char) =>
+      char.match(/[a-zA-Z]/)
+        ? String.fromCharCode(char.charCodeAt(0) + shift)
+        : char,
+    )
     .join('');
 
 export const getMostCommonLetters = (text = '') => {
