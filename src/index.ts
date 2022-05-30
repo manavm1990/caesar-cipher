@@ -1,21 +1,30 @@
+// A shift of 1 means no change (off by one)
 export const decode = (encoded = '', shift: number) =>
   encoded
     .split('')
     .map((char) =>
       char.match(/[a-zA-Z]/)
-        ? String.fromCharCode(char.charCodeAt(0) - shift)
+        ? String.fromCharCode(char.charCodeAt(0) - shift + 1)
         : char,
     )
     .join('');
 
-export const encode = (text = '', shift = 3) =>
+export const encode = (text = '', shift = 4) =>
   text
     .split('')
-    .map((char) =>
-      char.match(/[a-zA-Z]/)
-        ? String.fromCharCode(char.charCodeAt(0) + shift)
-        : char,
-    )
+    .map((char) => {
+      if (!char.match(/[a-zA-Z]/)) return char;
+
+      const shiftedCode = char.charCodeAt(0) + shift - 1;
+
+      // wrap around the alphabet
+      if (shiftedCode > 122) {
+        // At a shift of 22, the letter 'f' (shifted to 123) wraps to 'a' (97)
+        return String.fromCharCode((shiftedCode % 122) + 96);
+      }
+
+      return String.fromCharCode(shiftedCode);
+    })
     .join('');
 
 export const getMostCommonLetters = (text = '') => {
