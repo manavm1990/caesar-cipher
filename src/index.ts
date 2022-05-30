@@ -1,3 +1,24 @@
+const shiftDecodeLower = (originalCharCode: number, shift: number) => {
+  let decodedCharCode = originalCharCode - shift + 1;
+
+  if (decodedCharCode < 65) {
+    decodedCharCode = 90 - (65 - decodedCharCode) + 1;
+  }
+
+  return String.fromCharCode(decodedCharCode);
+};
+
+const shiftDecodeUpper = (originalCharCode: number, shift: number) => {
+  let decodedCharCode = originalCharCode - shift + 1;
+
+  // Must be upper case
+  if (decodedCharCode < 97) {
+    decodedCharCode = 122 - (97 - decodedCharCode) + 1;
+  }
+
+  return String.fromCharCode(decodedCharCode);
+};
+
 const shiftEncodeLower = (originalCharCode: number, shift: number) => {
   const shiftedCode = originalCharCode + shift - 1;
 
@@ -26,21 +47,16 @@ export const decode = (encoded = '', shift: number) =>
     .split('')
     .map((char) => {
       if (!char.match(/[a-zA-Z]/)) return char;
-      let decodedCharCode = char.charCodeAt(0) - shift + 1;
 
       // Letters are 65-90 or 97-122
       // Get the encoded char code to see if it's upper or lower case
       const encodedCharCode = char.charCodeAt(0);
 
       if (encodedCharCode >= 65 && encodedCharCode <= 90) {
-        return shiftEncodeUpper(encodedCharCode, shift);
+        return shiftDecodeLower(encodedCharCode, shift);
       }
 
-      if (decodedCharCode < 97) {
-        decodedCharCode = 122 - (97 - decodedCharCode) + 1;
-      }
-
-      return String.fromCharCode(decodedCharCode);
+      return shiftDecodeUpper(encodedCharCode, shift);
     })
     .join('');
 
