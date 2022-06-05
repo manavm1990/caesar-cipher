@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.18.2
   '@babel/preset-env': ^7.18.2
   '@babel/preset-typescript': ^7.17.12
-  '@tsconfig/node14': ^1.0.1
+  '@tsconfig/node16': ^1.0.2
   '@types/jest': ^27.4.1
   '@types/node': '*'
   '@typescript-eslint/eslint-plugin': ^5.26.0
@@ -25,7 +25,7 @@ devDependencies:
   '@babel/core': 7.18.2
   '@babel/preset-env': 7.18.2_@babel+core@7.18.2
   '@babel/preset-typescript': 7.17.12_@babel+core@7.18.2
-  '@tsconfig/node14': 1.0.1
+  '@tsconfig/node16': 1.0.2
   '@types/jest': 27.5.1
   '@types/node': 17.0.36
   '@typescript-eslint/eslint-plugin': 5.26.0_hzuh7e2up357pvq3mkokjvu2lq
