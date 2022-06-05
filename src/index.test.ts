@@ -60,10 +60,6 @@ describe('Caesar cipher encoding and decoding', () => {
     ).toBe('Wklv vhqwhqfh vkrxog xvh wkh ohwwhu h pruh wkdq dqb rwkhu ohwwhu.');
   });
 
-  it('should encode a string with a Caesar Cipher shift of -4', () => {
-    expect(encode('Hello world!', -4)).toBe('Dahhk sknhz!');
-  });
-
   it('should encode a lowercase string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
     expect(encode('hello world!', 22)).toBe('czggj rjmgy!');
 
