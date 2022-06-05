@@ -1,4 +1,4 @@
-const shiftDecodeLower = (originalCharCode: number, shift: number) => {
+const shiftDecodeLowerCase = (originalCharCode: number, shift: number) => {
   const decodedCharCode = originalCharCode - shift + 1;
 
   if (decodedCharCode < 65) {
@@ -8,7 +8,7 @@ const shiftDecodeLower = (originalCharCode: number, shift: number) => {
   return String.fromCharCode(decodedCharCode);
 };
 
-const shiftDecodeUpper = (originalCharCode: number, shift: number) => {
+const shiftDecodeUpperCase = (originalCharCode: number, shift: number) => {
   const decodedCharCode = originalCharCode - shift + 1;
 
   if (decodedCharCode < 97) {
@@ -52,10 +52,10 @@ export const decode = (encoded = '', shift: number) =>
       const encodedCharCode = char.charCodeAt(0);
 
       if (encodedCharCode >= 65 && encodedCharCode <= 90) {
-        return shiftDecodeLower(encodedCharCode, shift);
+        return shiftDecodeLowerCase(encodedCharCode, shift);
       }
 
-      return shiftDecodeUpper(encodedCharCode, shift);
+      return shiftDecodeUpperCase(encodedCharCode, shift);
     })
     .join('');
 
@@ -99,8 +99,6 @@ export const guessWithFrequencyAnalysis = (encoded: string) => {
   const mostCommonLetterCode = getMostCommonLetters(encoded)
     .filter((letter) => letter !== 'e')[0]
     ?.charCodeAt(0);
-
-  console.log(String.fromCharCode(mostCommonLetterCode!));
 
   if (!mostCommonLetterCode) return null;
 
