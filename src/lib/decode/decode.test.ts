@@ -1,4 +1,4 @@
-import { testLong, testShort } from '../common/common';
+import { testLong, testShort } from 'lib/common/common';
 import { decode, guessWithFrequencyAnalysis } from './decode';
 
 it('should decode a string with a Caesar Cipher shift of 4', () => {

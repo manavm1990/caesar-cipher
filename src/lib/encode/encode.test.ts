@@ -1,4 +1,4 @@
-import { testLong, testShort } from '../common/common';
+import { testLong, testShort } from 'lib/common/common';
 import { encode } from './encode';
 
 it('should encode a string with a Caesar Cipher shift of 4', () => {

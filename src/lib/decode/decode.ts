@@ -1,4 +1,4 @@
-import { getMostCommonLetters } from '../common/common';
+import { getMostCommonLetters } from 'lib/common/common';
 
 const shiftDecodeLowerCase = (originalCharCode: number, shift: number) => {
   const decodedCharCode = originalCharCode - shift + 1;
