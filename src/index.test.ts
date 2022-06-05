@@ -8,9 +8,9 @@ import {
   tallyLetters,
 } from './index';
 
-const test = 'Every good boy does fine.';
-
 describe('getHighestLetterFrequency', () => {
+  const test = 'Every good boy does fine.';
+
   it('should remove spaces', () => {
     expect(removeSpaces(test)).toBe('Everygoodboydoesfine.');
   });
@@ -50,25 +50,24 @@ describe('getHighestLetterFrequency', () => {
 });
 
 describe('Caesar cipher encoding and decoding', () => {
-  it('should encode a string with a Caesar Cipher shift of 4', () => {
-    expect(encode('Hello world!', 4)).toBe('Khoor zruog!');
+  const testShort = 'Hello world!';
+  const testLong =
+    'This sentence should use the letter e more than any other letter.';
 
-    expect(
-      encode(
-        'This sentence should use the letter e more than any other letter.',
-      ),
-    ).toBe('Wklv vhqwhqfh vkrxog xvh wkh ohwwhu h pruh wkdq dqb rwkhu ohwwhu.');
+  it('should encode a string with a Caesar Cipher shift of 4', () => {
+    expect(encode(testShort, 4)).toBe('Khoor zruog!');
+
+    expect(encode(testLong)).toBe(
+      'Wklv vhqwhqfh vkrxog xvh wkh ohwwhu h pruh wkdq dqb rwkhu ohwwhu.',
+    );
   });
 
   it('should encode a lowercase string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
-    expect(encode('hello world!', 22)).toBe('czggj rjmgy!');
+    expect(encode(testShort.toLowerCase(), 22)).toBe('czggj rjmgy!');
 
-    expect(
-      encode(
-        'this sentence should use the letter e more than any other letter.',
-        22,
-      ),
-    ).toBe('ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.');
+    expect(encode(testLong.toLowerCase(), 22)).toBe(
+      'ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.',
+    );
   });
 
   it('should encode a mixed case string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
@@ -83,14 +82,11 @@ describe('Caesar cipher encoding and decoding', () => {
   });
 
   it('should encode an upper case string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
-    expect(encode('HELLO WORLD!', 22)).toBe('CZGGJ RJMGY!');
+    expect(encode(testShort.toUpperCase(), 22)).toBe('CZGGJ RJMGY!');
 
-    expect(
-      encode(
-        'THIS SENTENCE SHOULD USE THE LETTER E MORE THAN ANY OTHER LETTER.',
-        22,
-      ),
-    ).toBe('OCDN NZIOZIXZ NCJPGY PNZ OCZ GZOOZM Z HJMZ OCVI VIT JOCZM GZOOZM.');
+    expect(encode(testLong.toUpperCase(), 22)).toBe(
+      'OCDN NZIOZIXZ NCJPGY PNZ OCZ GZOOZM Z HJMZ OCVI VIT JOCZM GZOOZM.',
+    );
   });
 
   it('should decode a string with a Caesar Cipher shift of 4', () => {
@@ -103,7 +99,7 @@ describe('Caesar cipher encoding and decoding', () => {
         'ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.',
         22,
       ),
-    ).toBe('this sentence should use the letter e more than any other letter.');
+    ).toBe(testLong.toLowerCase());
   });
 
   it('should decode a mixed case string with a Caesar Cipher shift even when the letters wrap around the alphabet', () => {
@@ -121,7 +117,7 @@ describe('Caesar cipher encoding and decoding', () => {
         'OCDN NZIOZIXZ NCJPGY PNZ OCZ GZOOZM Z HJMZ OCVI VIT JOCZM GZOOZM.',
         22,
       ),
-    ).toBe('THIS SENTENCE SHOULD USE THE LETTER E MORE THAN ANY OTHER LETTER.');
+    ).toBe(testLong.toUpperCase());
   });
 
   it("should make a reasonable guess based upon a single 'non-e' letter occurring most frequently", () => {
@@ -129,6 +125,6 @@ describe('Caesar cipher encoding and decoding', () => {
       guessWithFrequencyAnalysis(
         'ocdn nziozixz ncjpgy pnz ocz gzoozm z hjmz ocvi vit joczm gzoozm.',
       ),
-    ).toBe('this sentence should use the letter e more than any other letter.');
+    ).toBe(testLong.toLowerCase());
   });
 });
